@@ -7,18 +7,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { useClerk } from "@clerk/nextjs";
-import { EditorPanelSkeleton, EditorViewSkeleton } from "./EditorPanelSkeleton";
+import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/hooks/useMounted";
-import { ShareSnippetDialog } from "./ShareSnippetDialog";
-
-
+import ShareSnippetDialog from "./ShareSnippetDialog";
 
 function EditorPanel() {
   const clerk = useClerk();
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const { language, theme, fontSize, editor, setFontSize, setEditor } = useCodeEditorStore();
 
-  const mounted = useMounted()
+  const mounted = useMounted();
 
   useEffect(() => {
     const savedCode = localStorage.getItem(`editor-code-${language}`);
@@ -47,7 +45,7 @@ function EditorPanel() {
     localStorage.setItem("editor-font-size", size.toString());
   };
 
-  if(!mounted) return null;
+  if (!mounted) return null;
 
   return (
     <div className="relative">
@@ -106,9 +104,10 @@ function EditorPanel() {
           </div>
         </div>
 
-        {/* Editor */}
+        {/* Editor  */}
         <div className="relative group rounded-xl overflow-hidden ring-1 ring-white/[0.05]">
-        {clerk.loaded && <Editor
+          {clerk.loaded && (
+            <Editor
               height="600px"
               language={LANGUAGE_CONFIG[language].monacoLanguage}
               onChange={handleEditorChange}
@@ -136,15 +135,14 @@ function EditorPanel() {
                   horizontalScrollbarSize: 8,
                 },
               }}
-            />}
+            />
+          )}
 
-            {!clerk.loaded && <EditorPanelSkeleton />}
-
+          {!clerk.loaded && <EditorPanelSkeleton />}
         </div>
+      </div>
+      {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />}
     </div>
-
-    {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)}/>}
-  </div>
   );
 }
 export default EditorPanel;
