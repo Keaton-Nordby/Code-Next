@@ -9,6 +9,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton, EditorViewSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/hooks/useMounted";
+import { ShareSnippetDialog } from "./ShareSnippetDialog";
 
 
 
@@ -141,6 +142,8 @@ function EditorPanel() {
 
         </div>
     </div>
+
+    {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)}/>}
   </div>
   );
 }
