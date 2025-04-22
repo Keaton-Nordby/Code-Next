@@ -1,9 +1,11 @@
-import React from 'react'
+import { Id } from "../../../../convex/_generated/dataModel";
 
-const Comments = () => {
+function Comments({snippetId}: {snippetId: Id<"snippets">}) {
   return (
-    <div>Comments</div>
+    <div>
+        comments
+    </div>
   )
 }
 
-export default Comments
+export default Comments;
