@@ -3,7 +3,8 @@ import { Snippet } from "@/types";
 import { useUser } from "@clerk/nextjs";
 import { useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -17,6 +18,10 @@ function SnippetCard({ snippet }: { snippet: Snippet }) {
   const { user } = useUser();
   const deleteSnippet = useMutation(api.snippets.deleteSnippet);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const formattedDate = useMemo(() => {
+    return new Date(snippet._creationTime).toLocaleDateString();
+  }, [snippet._creationTime]);
 
   const handleDelete = async () => {
     setIsDeleting(true);
@@ -73,7 +78,7 @@ function SnippetCard({ snippet }: { snippet: Snippet }) {
                   </span>
                   <div className="flex items-center gap-2 text-xs text-gray-500">
                     <Clock className="size-3" />
-                    {new Date(snippet._creationTime).toLocaleDateString()}
+                    {formattedDate}
                   </div>
                 </div>
               </div>
