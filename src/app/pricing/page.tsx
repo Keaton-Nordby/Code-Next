@@ -7,6 +7,8 @@ import ProPlanView from "./_components/ProPlanView";
 
 async function PricingPage() {
     const user = await currentUser();
+
+    if(!user?.id) return null; // now it automatically exits if there is no user
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
     const convexUser = await convex.query(api.users.getUser, {
