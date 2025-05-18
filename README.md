@@ -1,50 +1,48 @@
-# Code-Next API
+# CodeNext
 
-A simple Node.js API built using [Express](https://expressjs.com/) and [Mongoose](https://mongoosejs.com/). This project is set up for development with `nodemon` and follows basic modularization for scalability.
+**Post, React, Comment, and Share Code Snippets in a Variety of Different Languages**
+
+CodeNext is a full-stack web application built with React.js, Next.js 15, Convex (for database), and Clerk (for authentication). It enables users to share, comment on, and react to code snippets in multiple programming languages.
+
+---
 
 ## Features
 
-- REST API built with Express
-- MongoDB integration via Mongoose
-- Live-reload development with Nodemon
+- Post code snippets in various programming languages
+- React to posts and comments
+- Comment on code snippets
+- User authentication and profile management with Clerk
+- Real-time database powered by Convex
+- Responsive design using Tailwind CSS (or your CSS framework)
 
-## Prerequisites
+---
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+## Acknowledgments
+
+This project is **based on open-source code by Burak**. It has been customized and extended with additional features and design elements to suit the goals of CodeNext.
+
+---
+
+## Technologies Used
+
+- React.js
+- Next.js 15
+- Convex (database)
+- Clerk (authentication)
+- Tailwind CSS (optional)
+
+---
 
 ## Getting Started
 
-Clone the repository
-git clone https://github.com/your-username/code-next-api.git
-cd code-next-api
+### Prerequisites
 
+- Node.js (v16 or later recommended)
+- npm or yarn
 
-Install dependencies
-npm install
+### Installation
 
-Run the server
-Development mode (with Nodemon)
-npm run dev
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/codenext.git
 
-Production mode
-
-npm run serve
-The server will start on http://localhost:3000 (or your configured port).
-
-Project Structure
-bash
-Copy code
-├── server.js         # Main server entry point
-├── package.json      # Project configuration
-├── .gitignore        # Git ignored files
-└── README.md         # Project documentation
-Scripts
-npm run dev — Start with live reload (nodemon)
-
-npm run serve — Start server normally
-
-Technologies Used
-Backend: Express.js
-Database: MongoDB + Mongoose
-Dev Tools: Nodemon
